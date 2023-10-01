@@ -13,6 +13,7 @@ public static class DependencyInjectionConfig
         services.AddScoped<IRandomService, RandomService>();
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<ICustomerService, CustomerService>();
+        services.AddScoped<IOrderService, OrderService>();
         // Repositories
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();

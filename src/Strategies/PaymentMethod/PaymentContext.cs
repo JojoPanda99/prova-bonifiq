@@ -9,7 +9,7 @@ public class PaymentContext
         PaymentMethodStrategy = paymentMethodStrategy;
     }
 
-    public void payOrder()
+    public void PayOrder()
     {
         PaymentMethodStrategy.Pay();
     }

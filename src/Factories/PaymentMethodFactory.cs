@@ -7,13 +7,13 @@ public class PaymentMethodFactory
 {
     public static PaymentMethodStrategy CreateInstanceStrategy(string paymentMethod)
     {
-        switch (paymentMethod)
+        switch (paymentMethod.ToUpper())
         {
-            case "pix":
+            case "PIX":
                 return new PixPaymentMethodStrategy();
-            case "creditcard":
+            case "CREDITCARD":
                 return new CreditCardPaymentMethodStrategy();
-            case "paypal":
+            case "PAYPAL":
                 return new PayPalPaymentMethodStrategy();
             default:
                 throw new ArgumentException("Invalid payment method");

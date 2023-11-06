@@ -3,19 +3,29 @@ import {RouterModule, Routes} from '@angular/router';
 import {ListUserComponent} from "./user/list-user/list-user.component";
 import {CreateUserComponent} from "./user/create-user/create-user.component";
 import {UpdateUserComponent} from "./user/update-user/update-user.component";
+import {BaseUserRouteComponent} from "./user/component/base-user-route/base-user-route.component";
+import {ViewUserComponent} from "./user/view-user/view-user.component";
 
 const routes: Routes = [
     {
-        path: "view/:id",
-        component: ListUserComponent,
-    },
-    {
-        path: "create",
-        component: CreateUserComponent,
-    },
-    {
-        path: "update/:id",
-        component: UpdateUserComponent,
+        path: "",
+        component: BaseUserRouteComponent,
+        children: [
+            {
+                path: "view/:id",
+                component: ViewUserComponent,
+            },
+            {
+                path: "",
+                outlet: "form",
+                component: CreateUserComponent,
+            },
+            {
+                path: ":id",
+                outlet: "form",
+                component: UpdateUserComponent,
+            },
+        ]
     },
 ];
 

@@ -9,11 +9,12 @@ import {ListUserComponent} from "./user/list-user/list-user.component";
 import {BaseUserRouteComponent} from "./user/component/base-user-route/base-user-route.component";
 import {UserFormComponent} from "./user/component/user-form/user-form.component";
 import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { ViewUserComponent } from './user/view-user/view-user.component';
 
 const USER_COMPONENTS = [CreateUserComponent, ListUserComponent, BaseUserRouteComponent, UserFormComponent]
 
 @NgModule({
-    declarations: [USER_COMPONENTS, UpdateUserComponent],
+    declarations: [USER_COMPONENTS, UpdateUserComponent, ViewUserComponent],
     imports: [
         CommonModule,
         PublicRoutingModule,

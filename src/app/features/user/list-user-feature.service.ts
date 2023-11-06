@@ -5,6 +5,7 @@ import {UserFeature} from "../../core/models/user-responses.models";
 import {ToastrService} from "ngx-toastr";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {HttpErrorResponse} from "@angular/common/http";
+import {EducationEnum} from "../../shared/enums/education.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +22,7 @@ export class ListUserFeatureService {
                     users.map((user: any) => ({
                             id: user.id,
                             name: user.name + " " + user.surname,
-                            education: user.education,
+                            education: EducationEnum[user.education],
                         })
                     )
                 )

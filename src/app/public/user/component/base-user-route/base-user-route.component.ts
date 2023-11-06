@@ -4,14 +4,14 @@ import {Component} from "@angular/core";
     selector: "app-base-user-route",
     template: `
         <div>
-            <div class="row gap-5">
+            <div class="row gap-4">
                 <div class="col-12">
-                    <app-create-user></app-create-user>
+                    <router-outlet name="form"></router-outlet>
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <app-list-user/>
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <router-outlet></router-outlet>
                 </div>
             </div>

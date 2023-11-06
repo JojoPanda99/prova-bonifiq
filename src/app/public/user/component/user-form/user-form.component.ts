@@ -53,7 +53,11 @@ export class UserFormComponent extends BaseComponent {
             surname: new FormControl("", [Validators.required]),
             email: new FormControl("", [Validators.required]),
             birthDate: new FormControl("", [Validators.required]),
-            education: new FormControl(0, [Validators.required]),
+            education: new FormControl(NaN, [Validators.required, this.validateNaN]),
         });
+    }
+
+    private validateNaN = (control: FormControl): { [key: string]: any } | null => {
+        return isNaN(control.value) ? {required: true} : null;
     }
 }

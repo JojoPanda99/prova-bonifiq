@@ -3,6 +3,8 @@ import {Observable} from "rxjs";
 import {BaseComponent} from "src/app/shared/components/base-component.component";
 import {ListUserFeatureService} from "../../../features/user/list-user-feature.service";
 import {UserFeature} from "../../../core/models/user-responses.models";
+import {Router, Routes} from "@angular/router";
+import {UpdateUserComponent} from "../update-user/update-user.component";
 
 @Component({
     selector: "app-list-user",
@@ -25,7 +27,7 @@ import {UserFeature} from "../../../core/models/user-responses.models";
                         <button class="btn btn-dark" [routerLink]="['/view', user.id]">
                             Ver
                         </button>
-                        <button class="btn btn-warning" [routerLink]="['/update', user.id]">
+                        <button class="btn btn-warning" [routerLink]="[{ outlets: { form: ['form', user.id] } }]">
                             Editar
                         </button>
                         <button class="btn btn-danger" (click)="deleteUser(user.id)">
@@ -35,16 +37,6 @@ import {UserFeature} from "../../../core/models/user-responses.models";
                 </tr>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                        <button class="btn mx-2">Anterior</button>
-                    </li>
-                    <li class="page-item">
-                        <button class="btn mx-2">Proxima</button>
-                    </li>
-                </ul>
-            </nav>
         </div>
     `,
     styles: [],
@@ -52,7 +44,7 @@ import {UserFeature} from "../../../core/models/user-responses.models";
 export class ListUserComponent extends BaseComponent {
     protected users$!: Observable<UserFeature[]>;
 
-    constructor(private userListFeature: ListUserFeatureService) {
+    constructor(private userListFeature: ListUserFeatureService, private route: Router) {
         super();
     }
 

@@ -5,7 +5,6 @@ import {BaseUserRouteComponent} from "./public/user/component/base-user-route/ba
 const routes: Routes = [
     {
         path: "",
-        component: BaseUserRouteComponent,
         loadChildren: () =>
             import("./public/public.module").then((m) => m.PublicModule),
     },

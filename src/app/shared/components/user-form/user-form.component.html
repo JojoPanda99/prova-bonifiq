@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="row align-items-end">
+    <div class="col-2">
+      <form-input-ui
+        [label]="'Nome'"
+        [control]="formControls.name"
+        [name]="'name'"
+      />
+    </div>
+    <div class="col-2">
+      <form-input-ui
+        [label]="'Sobrenome'"
+        [control]="formControls.surname"
+        [name]="'surname'"
+      />
+    </div>
+    <div class="col-2">
+      <form-input-ui
+        [label]="'Email'"
+        [control]="formControls.email"
+        [name]="'email'"
+        [type]="'email'"
+      />
+    </div>
+    <div class="col-2">
+      <form-input-ui
+        [label]="'Data Nascimento'"
+        [control]="formControls.birthDate"
+        [name]="'birthDate'"
+        [type]="'date'"
+      />
+    </div>
+    <div class="col-2">
+      <form-input-ui
+        [label]="'Escolaridade'"
+        [control]="formControls.education"
+        [name]="'education'"
+      />
+    </div>
+    <div class="col-2">
+      <button class="btn btn-dark" (click)="submitForm()">Criar</button>
+    </div>
+  </div>
+</div>

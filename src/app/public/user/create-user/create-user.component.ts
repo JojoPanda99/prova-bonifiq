@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
-import {UserService} from "src/app/core/services/user.service";
+import {CreateUserFeatureService} from "../../../features/user/create-user-feature.service";
+import {FormGroup} from "@angular/forms";
 
 @Component({
     selector: "app-create-user",
@@ -10,12 +11,10 @@ import {UserService} from "src/app/core/services/user.service";
     styles: [],
 })
 export class CreateUserComponent {
-    private user!: any;
-
-    constructor(private userService: UserService) {
+    constructor(private createUserFeatureService: CreateUserFeatureService) {
     }
 
-    public submit(payload: any): void {
-        console.log(payload);
+    public submit(payload: FormGroup): void {
+        this.createUserFeatureService.createUser(payload);
     }
 }

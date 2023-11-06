@@ -7,10 +7,9 @@ import {SharedModule} from "../shared/shared.module";
 import {CreateUserComponent} from "./user/create-user/create-user.component";
 import {ListUserComponent} from "./user/list-user/list-user.component";
 import {BaseUserRouteComponent} from "./user/component/base-user-route/base-user-route.component";
-import {ListUserFeatureServiceAbstract} from "../core/abstracts/list-user-feature-service.abstract";
-import {ListUserFeatureService} from "../features/user/list-user-feature.service";
+import {UserFormComponent} from "./user/component/user-form/user-form.component";
 
-const USER_COMPONENTS = [CreateUserComponent, ListUserComponent, BaseUserRouteComponent]
+const USER_COMPONENTS = [CreateUserComponent, ListUserComponent, BaseUserRouteComponent, UserFormComponent]
 
 @NgModule({
     declarations: [USER_COMPONENTS],
@@ -19,10 +18,6 @@ const USER_COMPONENTS = [CreateUserComponent, ListUserComponent, BaseUserRouteCo
         PublicRoutingModule,
         SharedModule,
     ],
-    providers: [{
-        provide: ListUserFeatureServiceAbstract,
-        useClass: ListUserFeatureService
-    }]
 })
 export class PublicModule {
 }

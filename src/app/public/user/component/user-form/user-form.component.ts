@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators,} from "@angular/forms";
 import {UserFormControls} from "./user-form.type";
-import {BaseComponent} from "../base-component.component";
+import {BaseComponent} from "../../../../shared/components/base-component.component";
 
 @Component({
     selector: "app-user-form",
@@ -24,7 +24,7 @@ export class UserFormComponent extends BaseComponent {
 
     protected submitForm() {
         if (this.userForm.valid) {
-            this.formEvent.emit(this.userForm.valid);
+            this.formEvent.emit(this.userForm);
         }
     }
 

@@ -2,15 +2,16 @@ import {Injectable} from '@angular/core';
 import {UserService} from "../../core/services/user.service";
 import {map, Observable} from "rxjs";
 import {UserFeature} from "../../core/models/user-responses.models";
-import {ListUserFeatureServiceAbstract} from "../../core/abstracts/list-user-feature-service.abstract";
+import {ToastrService} from "ngx-toastr";
+import {error} from "@angular/compiler-cli/src/transformers/util";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ListUserFeatureService extends ListUserFeatureServiceAbstract<UserFeature> {
+export class ListUserFeatureService {
 
-    constructor(private userService: UserService) {
-        super();
+    constructor(private userService: UserService, private toastr: ToastrService) {
     }
 
     public getAll(): Observable<UserFeature[]> {
@@ -28,6 +29,12 @@ export class ListUserFeatureService extends ListUserFeatureServiceAbstract<UserF
     }
 
     public delete(id: number): void {
-        this.userService.delete(id);
+        this.userService.delete(id).subscribe({
+            next: (response: any) => this.toastr.success('Usuario criado com sucesso!', 'Sucesso!'),
+            error: (err: HttpErrorResponse) => {
+                err.error.message.forEach((e: string) => this.toastr.error(e));
+            }
+
+        });
     }
 }

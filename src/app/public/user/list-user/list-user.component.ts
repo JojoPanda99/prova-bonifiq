@@ -3,11 +3,11 @@ import {Observable} from "rxjs";
 import {BaseComponent} from "src/app/shared/components/base-component.component";
 import {ListUserFeatureService} from "../../../features/user/list-user-feature.service";
 import {UserFeature} from "../../../core/models/user-responses.models";
-import {ListUserFeatureServiceAbstract} from "../../../core/abstracts/list-user-feature-service.abstract";
 
 @Component({
     selector: "app-list-user",
     template: `
+        <h3 class="text-center">Lista de Usuarios</h3>
         <div class="container">
             <table class="table table-striped text-center">
                 <thead>
@@ -62,5 +62,6 @@ export class ListUserComponent extends BaseComponent {
 
     protected deleteUser(userId: number) {
         this.userListFeature.delete(userId);
+        this.userListFeature.getAll();
     }
 }

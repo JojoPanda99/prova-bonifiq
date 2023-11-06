@@ -8,8 +8,9 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 @Component({
     selector: 'app-view-user',
     template: `
-        <p>
-            view-user works!
+        <h3>Usuario</h3>
+        <p class="btn" (click)="navigateBack()">
+            Voltar
         </p>
         <div class="card">
             <div class="card-header">
@@ -41,4 +42,6 @@ export class ViewUserComponent extends BaseComponent {
             this.user = this.viewUserFeature.getUser(id);
         });
     }
+
+    public navigateBack = () => this.viewUserFeature.navigateBack();
 }

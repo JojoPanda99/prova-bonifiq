@@ -1,6 +1,5 @@
 export class DateUtils {
-    public static DatetimeToDate(datetime: string): string {
-        const date = new Date(datetime);
+    public static DatetimeToDate(date: Date): string {
         return date.toISOString().split('T')[0];
     }
 

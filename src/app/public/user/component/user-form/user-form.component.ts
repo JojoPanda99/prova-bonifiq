@@ -8,7 +8,11 @@ import {Observable} from "rxjs";
 @Component({
     selector: "app-user-form",
     templateUrl: "./user-form.component.html",
-    styles: [],
+    styles: [`
+        div.col-2 
+            margin: auto 0px 0px
+        
+    `],
 })
 export class UserFormComponent extends BaseComponent {
     @Input() userValue!: Observable<User>;
@@ -21,16 +25,13 @@ export class UserFormComponent extends BaseComponent {
     }
 
     override ngOnInit(): void {
-        console.log('oi');
         this.createFormGroup();
         this.formControls = this.userForm.controls;
     }
 
     override ngOnChanges(changes: SimpleChanges) {
-        console.log('ng');
         const currentValue = changes["userValue"].currentValue;
-        currentValue.subscribe((user: any) =>{
-            console.log(user)
+        currentValue.subscribe((user: any) => {
             this.userForm.patchValue({
                 name: user.name,
                 surname: user.surname,

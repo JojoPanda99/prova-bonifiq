@@ -29,10 +29,14 @@ export class ViewUserFeatureService {
                         err.error.messages.forEach((e: any) => {
                             this.toastr.error(e);
                         });
-                        this.router.navigateByUrl('/');
+                        this.navigateBack()
                         return of(err);
                     }
                 )
             );
+    }
+
+    public navigateBack() {
+        this.router.navigateByUrl('/');
     }
 }

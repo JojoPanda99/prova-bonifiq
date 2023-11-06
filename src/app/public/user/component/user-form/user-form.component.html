@@ -1,20 +1,20 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-2">
+    <div class="col-4">
       <form-input-ui
         [label]="'Nome'"
         [control]="formControls.name"
         [name]="'name'"
       />
     </div>
-    <div class="col-2">
+    <div class="col-4">
       <form-input-ui
         [label]="'Sobrenome'"
         [control]="formControls.surname"
         [name]="'surname'"
       />
     </div>
-    <div class="col-2">
+    <div class="col-4">
       <form-input-ui
         [label]="'Email'"
         [control]="formControls.email"
@@ -22,7 +22,7 @@
         [type]="'email'"
       />
     </div>
-    <div class="col-2">
+    <div class="col-4">
       <form-input-ui
         [label]="'Data Nascimento'"
         [control]="formControls.birthDate"
@@ -30,7 +30,7 @@
         [type]="'date'"
       />
     </div>
-    <div class="col-2">
+    <div class="col-4">
       <education-select-ui
         [label]="'Escolaridade'"
         [control]="formControls.education"
@@ -38,7 +38,7 @@
       />
     </div>
     <div class="col-2">
-      <button class="btn btn-dark" (click)="submitForm()">Criar</button>
+      <button class="btn btn-dark" (click)="submitForm()">Salvar</button>
     </div>
   </div>
 </div>

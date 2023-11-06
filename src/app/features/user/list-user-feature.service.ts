@@ -3,7 +3,6 @@ import {UserService} from "../../core/services/user.service";
 import {map, Observable} from "rxjs";
 import {UserFeature} from "../../core/models/user-responses.models";
 import {ToastrService} from "ngx-toastr";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 import {HttpErrorResponse} from "@angular/common/http";
 import {EducationEnum} from "../../shared/enums/education.enum";
 

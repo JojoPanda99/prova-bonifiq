@@ -12,17 +12,15 @@ const routes: Routes = [
         component: BaseUserRouteComponent,
         children: [
             {
+                path: "",
+                component: CreateUserComponent,
+            },
+            {
                 path: "view/:id",
                 component: ViewUserComponent,
             },
             {
-                path: "",
-                outlet: "form",
-                component: CreateUserComponent,
-            },
-            {
-                path: ":id",
-                outlet: "form",
+                path: "update/:id",
                 component: UpdateUserComponent,
             },
         ]

@@ -10,6 +10,7 @@ import {User} from "../../../core/models/user.model";
     selector: 'app-update-user',
     template: `
         <h3>Alterar Usuario</h3>
+        <p class="btn" (click)="navigateBack()">Voltar</p>
         <app-user-form [userValue]="user" (formEvent)="submit($event)"></app-user-form>
     `,
     styles: []
@@ -34,4 +35,6 @@ export class UpdateUserComponent extends BaseComponent {
         payload.value.id = this.id;
         this.createUserFeatureService.updateUser(payload);
     }
+
+    public navigateBack = () => this.router.navigateByUrl('/');
 }

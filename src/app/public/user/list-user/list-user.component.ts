@@ -1,10 +1,9 @@
 import {Component} from "@angular/core";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {BaseComponent} from "src/app/shared/components/base-component.component";
 import {ListUserFeatureService} from "../../../features/user/list-user-feature.service";
 import {UserFeature} from "../../../core/models/user-responses.models";
-import {Router, Routes} from "@angular/router";
-import {UpdateUserComponent} from "../update-user/update-user.component";
+import {Router} from "@angular/router";
 
 @Component({
     selector: "app-list-user",
@@ -24,10 +23,10 @@ import {UpdateUserComponent} from "../update-user/update-user.component";
                     <td>{{ user.name }}</td>
                     <td>{{ user.education }}</td>
                     <td class="d-flex w-50 justify-content-between">
-                        <button class="btn btn-dark" [routerLink]="['/view', user.id]">
+                        <button class="btn btn-dark" [routerLink]="['view', user.id]">
                             Ver
                         </button>
-                        <button class="btn btn-warning" [routerLink]="[{ outlets: { form: ['form', user.id] } }]">
+                        <button class="btn btn-warning" [routerLink]="['update', user.id]">
                             Editar
                         </button>
                         <button class="btn btn-danger" (click)="deleteUser(user.id)">
@@ -43,12 +42,14 @@ import {UpdateUserComponent} from "../update-user/update-user.component";
 })
 export class ListUserComponent extends BaseComponent {
     protected users$!: Observable<UserFeature[]>;
+    public static usersUpdate: Subject<any> = new Subject<any>();
 
     constructor(private userListFeature: ListUserFeatureService, private route: Router) {
         super();
     }
 
     override ngOnInit(): void {
+        ListUserComponent.usersUpdate.asObservable().subscribe((x) => this.users$ = this.userListFeature.getAll());
         this.users$ = this.userListFeature.getAll();
     }
 

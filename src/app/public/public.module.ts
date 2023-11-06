@@ -8,11 +8,12 @@ import {CreateUserComponent} from "./user/create-user/create-user.component";
 import {ListUserComponent} from "./user/list-user/list-user.component";
 import {BaseUserRouteComponent} from "./user/component/base-user-route/base-user-route.component";
 import {UserFormComponent} from "./user/component/user-form/user-form.component";
+import { UpdateUserComponent } from './user/update-user/update-user.component';
 
 const USER_COMPONENTS = [CreateUserComponent, ListUserComponent, BaseUserRouteComponent, UserFormComponent]
 
 @NgModule({
-    declarations: [USER_COMPONENTS],
+    declarations: [USER_COMPONENTS, UpdateUserComponent],
     imports: [
         CommonModule,
         PublicRoutingModule,

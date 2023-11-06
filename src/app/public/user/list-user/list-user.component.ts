@@ -25,7 +25,7 @@ import {UserFeature} from "../../../core/models/user-responses.models";
                         <button class="btn btn-dark" [routerLink]="['/view', user.id]">
                             Ver
                         </button>
-                        <button class="btn btn-warning" [routerLink]="['/edit', user.id]">
+                        <button class="btn btn-warning" [routerLink]="['/update', user.id]">
                             Editar
                         </button>
                         <button class="btn btn-danger" (click)="deleteUser(user.id)">

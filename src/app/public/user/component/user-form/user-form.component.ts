@@ -1,7 +1,9 @@
-import {Component, EventEmitter, Output} from "@angular/core";
+import {Component, EventEmitter, Input, Output, SimpleChanges} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators,} from "@angular/forms";
 import {UserFormControls} from "./user-form.type";
 import {BaseComponent} from "../../../../shared/components/base-component.component";
+import {User} from "../../../../core/models/user.model";
+import {Observable} from "rxjs";
 
 @Component({
     selector: "app-user-form",
@@ -9,6 +11,7 @@ import {BaseComponent} from "../../../../shared/components/base-component.compon
     styles: [],
 })
 export class UserFormComponent extends BaseComponent {
+    @Input() userValue!: Observable<User>;
     @Output() formEvent: EventEmitter<any> = new EventEmitter();
     protected userForm!: FormGroup<UserFormControls>;
     protected formControls!: UserFormControls;
@@ -18,8 +21,24 @@ export class UserFormComponent extends BaseComponent {
     }
 
     override ngOnInit(): void {
+        console.log('oi');
         this.createFormGroup();
         this.formControls = this.userForm.controls;
+    }
+
+    override ngOnChanges(changes: SimpleChanges) {
+        console.log('ng');
+        const currentValue = changes["userValue"].currentValue;
+        currentValue.subscribe((user: any) =>{
+            console.log(user)
+            this.userForm.patchValue({
+                name: user.name,
+                surname: user.surname,
+                email: user.email,
+                birthDate: user.birthDate,
+                education: user.education,
+            })
+        });
     }
 
     protected submitForm() {
